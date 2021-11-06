@@ -1,5 +1,5 @@
 const home = (req, res) => {
-    return res.send("This is Shoppers API/n the routes are<br>      /api/product<br>      /api/users<br>      /api/orders")
+    return res.send("This is Shoppers API the routes are<br>/api/products<br>/api/users<br>/api/orders")
 }
 
 module.exports = home
