@@ -7,9 +7,9 @@ const fs = require('fs')
 
 
 // add products
-const productCreate = async (req, res, next) => {
+const productCreate = async(req, res, next) => {
     const { name, description, price, pictureUrl, productType, productBrand } = req.body
-    const URL = 'http://localhost:5002'
+    const URL = process.env.SERVER_URL
 
     // checking the request parameters
     console.log("values: ", name, description, price, pictureUrl, productType, productBrand, req.file)
@@ -59,8 +59,7 @@ const productCreate = async (req, res, next) => {
     if (isTypeNew) {
         const typeId = isTypeNew.id
         console.log("The type is already in the list: ", isTypeNew.name)
-    }
-    else {
+    } else {
         const addProductType = await ProductsType.create({
             name: productType
         }).catch((err) => {
@@ -75,8 +74,7 @@ const productCreate = async (req, res, next) => {
     if (isBrandNew) {
         const brandId = isBrandNew.id
         console.log("The Brand is already present: ", isBrandNew.name)
-    }
-    else {
+    } else {
         const addProductBrand = await ProductsBrand.create({
             name: productBrand
         }).catch((err) => {
@@ -105,57 +103,56 @@ const productCreate = async (req, res, next) => {
 }
 
 // get all the products
-const productAll = async (req, res) => {
+const productAll = async(req, res) => {
     return res.status(200).json(res.paginatedResult)
 }
 
 // get a specific product
-const productID = async (req, res) => {
+const productID = async(req, res) => {
     if (!req.params.id || req.params.id === "") {
         next(new appError(400, "undefined request"))
     }
 
-    const product = await Product.findOne({ id: req.params.id },
-        ['id', 'name', 'description', 'price', 'pictureUrl', 'productType', 'productBrand', '-_id'])
+    const product = await Product.findOne({ id: req.params.id }, ['id', 'name', 'description', 'price', 'pictureUrl', 'productType', 'productBrand', '-_id'])
 
     if (product) {
-        return res.status(200).json(product)                    // return the json format of the product
+        return res.status(200).json(product) // return the json format of the product
     }
     // error handling if the product was not found
     next(new appError(400, "the product was not found"))
 }
 
 // get a product by their product type
-const productByType = async (req, res) => {
+const productByType = async(req, res) => {
 
     const types = await ProductsType.find({}, ['id', 'name', '-_id'])
-    //     const product = await Product.find()
-    //     return res.status(200).json([{ id: 2, type: "T-shirt" }, { id: 1, type: "Shoe" }])
-    //     return res.status(200).json(product)
-    // }
-    // // const product = await Product.find({ productType: req.body.productType }) // search for the product by Type
-    // const product = await Product.find({}, 'productType _id').select()
-    //     .distinct('productType', (err) => console.log(err)) // returns all types of products
-    // console.log(product)
+        //     const product = await Product.find()
+        //     return res.status(200).json([{ id: 2, type: "T-shirt" }, { id: 1, type: "Shoe" }])
+        //     return res.status(200).json(product)
+        // }
+        // // const product = await Product.find({ productType: req.body.productType }) // search for the product by Type
+        // const product = await Product.find({}, 'productType _id').select()
+        //     .distinct('productType', (err) => console.log(err)) // returns all types of products
+        // console.log(product)
     if (types) {
-        return res.status(200).json(types)    // return the json format of list of products
+        return res.status(200).json(types) // return the json format of list of products
     }
     next(new appError(400, "There is no Type of product"))
 
 }
 
 // get products by their product brand
-const productByBrand = async (req, res) => {
+const productByBrand = async(req, res) => {
     const brands = await ProductsBrand.find({}, ['id', 'name', '-_id'])
     if (brands) {
-        return res.status(200).json(brands)    // return the json format of list of products
+        return res.status(200).json(brands) // return the json format of list of products
     }
     next(new appError(400, "There is no this brand available / server error"))
 }
 
 
 // delete a product
-const productDelete = async (req, res) => {
+const productDelete = async(req, res) => {
     if (!req.params.id || req.params.id === "") {
         next(new appError(400, "undefined request"))
     }

@@ -8,7 +8,7 @@ const app = require('./server')
 //     key: fs.readFileSync(path.join(__dirname, 'cert', 'privateKey.pem')),
 //     cert: fs.readFileSync(path.join(__dirname, 'cert', 'certificate.pem'))
 // }
-const PORT = 5002 || process.env.PORT
+const PORT = process.env.PORT
     // //console.log("key: ", key)
     // // SSL server connecting 
     // const httpServer = http.createServer(app);
