@@ -49,8 +49,8 @@ const Populatedata = async() => {
 }
 
 const AddProducts = () => {
-    const Image_URL = "http://localhost:5002/api/products/image/"
-    const URLS = "http://localhost:5002/api/products/image/"
+    const Image_URL = "https://ethio-shop.herokuapp.com/api/products/image/"
+        // const URLS = "http://localhost:5002/api/products/image/"
     products.forEach(async(product) => {
         const productType = await ProductsType.findOne({ id: product.productType })
         console.log(productType.name)

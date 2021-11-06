@@ -2,7 +2,7 @@ const Product = require('../models/product_model')
 const ProductsType = require('../models/productType_model')
 const ProductsBrand = require('../models/productBrand_model')
 
-const product_pagination = async (req, res, next) => {
+const product_pagination = async(req, res, next) => {
     let page, limit;
     const match = {}
     const sorts = {}
@@ -10,29 +10,27 @@ const product_pagination = async (req, res, next) => {
     // validating for request parameters
     if (req.query.typeId && req.query.typeId !== "") {
         // console.log('product type')
-        const type = await ProductsType.findOne({id: req.query.typeId})
+        const type = await ProductsType.findOne({ id: req.query.typeId })
         match.productType = type.name
     }
     if (req.query.brandId && req.query.brandId !== "") {
-        const brand = await ProductsBrand.findOne({id: req.query.brandId})
+        const brand = await ProductsBrand.findOne({ id: req.query.brandId })
         match.productBrand = brand.name
-        // console.log(`product Brand: ${match.productBrand}`)
+            // console.log(`product Brand: ${match.productBrand}`)
     }
     if (req.query.search && req.query.search !== "") {
         console.log('searching by name: ', req.query.search)
-        match.search =  req.query.search
+        match.search = req.query.search
     }
 
 
     if (req.query.sort === 'priceAsc') {
         sorts['sortBy'] = 'price'
         sorts['orderBy'] = 1
-    }
-    else if (req.query.sort === 'priceDesc') {
+    } else if (req.query.sort === 'priceDesc') {
         sorts['sortBy'] = 'price'
         sorts['orderBy'] = -1
-    }
-    else {
+    } else {
         sorts['sortBy'] = 'name'
         sorts['orderBy'] = 1
     }
@@ -49,17 +47,15 @@ const product_pagination = async (req, res, next) => {
 
 
 
-    if (req.query.page && req.query.limit) {
-        page = parseInt(req.query.page)
-        limit = parseInt(req.query.limit)
-    }
-    else if (req.body.limit && req.body.page) {
-        page = parseInt(req.body.page)
-        limit = parseInt(req.body.limit)
-    }
-    else {
+    if (req.query.pageIndex && req.query.pageSize) {
+        page = parseInt(req.query.pageIndex)
+        limit = parseInt(req.query.pageSize)
+    } else if (req.body.pageSize && req.body.pageIndex) {
+        page = parseInt(req.body.pageIndex)
+        limit = parseInt(req.body.pageSize)
+    } else {
         limit = 6
-        page = req.query.page ?  parseInt(req.query.page) : 1
+        page = req.query.pageIndex ? parseInt(req.query.pageIndex) : 1
     }
     if (limit && page) {
         const startIndex = (page - 1) * limit;
@@ -99,7 +95,9 @@ const product_pagination = async (req, res, next) => {
                 productType: (match.productType) ? match.productType : new RegExp(/.*/),
                 productBrand: match.productBrand ? match.productBrand : new RegExp(/.*/),
                 name: match.search ? { "$regex": match.search, "$options": "i" } : new RegExp(/.*/)
-            }, ['id','name', 'description', 'price', 'pictureUrl', 'productType', 'productBrand', '-_id']).skip(startIndex).limit(limit).sort([[`${sorts.sortBy}`, sorts.orderBy]])
+            }, ['id', 'name', 'description', 'price', 'pictureUrl', 'productType', 'productBrand', '-_id']).skip(startIndex).limit(limit).sort([
+                [`${sorts.sortBy}`, sorts.orderBy]
+            ])
             res.paginatedResult = result
             next();
         } catch (error) {
