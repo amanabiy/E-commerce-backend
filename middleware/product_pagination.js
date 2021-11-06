@@ -98,6 +98,9 @@ const product_pagination = async(req, res, next) => {
             }, ['id', 'name', 'description', 'price', 'pictureUrl', 'productType', 'productBrand', '-_id']).skip(startIndex).limit(limit).sort([
                 [`${sorts.sortBy}`, sorts.orderBy]
             ])
+            if (req.query.search || req.query.brandId || req.query.typeId) {
+                result.count = result.data.length
+            }
             res.paginatedResult = result
             next();
         } catch (error) {
