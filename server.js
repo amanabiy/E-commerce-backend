@@ -4,6 +4,7 @@ const user_route = require('./route/user_route')
 const product_router = require('./route/product_route')
 const cart_router = require('./route/carts_route')
 const order_router = require('./route/orders_route')
+const home_route = require('./route/home_route')
 const appError = require('./utility/appError')
 const error_handler = require('./controller/error_handler')
 const path = require('path')
@@ -73,9 +74,7 @@ mongoose.connect(DB_URL).then(() => {
 });
 
 
-app.get('/', (req, res) => {
-    return res.send("HI Connected successfully")
-})
+app.get('/', home_route)
 app.use('/api/products', product_router);
 app.use('/api/carts', cart_router);
 app.use('/api/users', user_route);
