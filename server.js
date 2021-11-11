@@ -19,51 +19,11 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-
-var corsOptions = {
-    origin: '*',
-    //Access-Control-Allow-Origin: *,
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-
-
-// app.use(function(req, res, next) {
-//    res.header("Access-Control-Allow-Origin", "*");
-//    res.header('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST');
-//    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//    if ('OPTIONS' == req.method) {
-//       res.sendStatus(200);
-//     }
-//     else {
-//       next();
-//     }});
-
+// allow CORS
 app.use(cors());
-
-// Add headers before the routes are defined
-// app.use(function (req, res, next) {
-
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//     // Set to true if you need the website to include cookies in the requests sent
-//     // to the API (e.g. in case you use sessions)
-//     res.setHeader('Access-Control-Allow-Credentials', false);
-
-//     // Pass to next layer of middleware
-//     next();
-// });
-//
-
-
 app.use(express.json());
+
+// connecting to the database
 const DB_URL = process.env.DB_URL
 console.log(DB_URL)
 mongoose.connect(DB_URL).then(() => {
@@ -73,7 +33,7 @@ mongoose.connect(DB_URL).then(() => {
     process.exit(1)
 });
 
-
+// routes
 app.get('/', home_route)
 app.use('/api/products', product_router);
 app.use('/api/carts', cart_router);
