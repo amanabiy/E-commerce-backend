@@ -27,3 +27,7 @@ Run `npm run dev` for a dev server.
 ## Build
 
 Run `npm run start` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+##
+
+[Link to the deployed](https://ethio-shop.herokuapp.com/)
