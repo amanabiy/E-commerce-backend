@@ -2,6 +2,8 @@
 A full end-point API for our webiste
 
 # Introduction
+shopper is an e-commerce website where users will be able to filter, search and find the product they want and buy online. we have tried to make the searching easier for our users and allow them to buy products from the comfort of their home. our website looks like this
+
 
 ## Environment
 
