@@ -1,5 +1,7 @@
-# A back end for shoper website
+# Shopper E-commerce
 A full end-point API for our webiste
+
+# Introduction
 
 ## Environment
 
