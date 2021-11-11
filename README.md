@@ -2,7 +2,7 @@
 A full end-point API for our webiste
 
 # Introduction
-shopper is an e-commerce website where users will be able to filter, search and find the product they want and buy online. we have tried to make the searching easier for our users and allow them to buy products from the comfort of their home. our website looks like this
+shopper is an e-commerce website where users will be able to filter, search and find the product they want and buy online. we have tried to make the searching easier for our users and allow them to buy products from the comfort of their home. our website looks like this (note that we have used sample data on this image)
 ![alt text](https://github.com/amanabiy/shopper-backend/blob/main/photo_2021-11-11_09-13-49.jpg)
 
 
