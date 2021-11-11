@@ -1,11 +1,10 @@
 # A back end for shoper website
-A full end-point API for the webiste
+A full end-point API for our webiste
 
 ## Environment
 
 * __OS:__ Ubuntu 14.04 LTS
 * __language:__ NodeJS
-* __frontend:__ Angular
 * __application server:__ express V4.17.1
 * __database:__ mongodb , mongoose V6.0.11
 
