@@ -48,7 +48,9 @@ Run `npm run dev` for a dev server.
 
 Run `npm run start` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-# Thanks
+# License 
+MIT © 
+
 
 
 
