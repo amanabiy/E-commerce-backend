@@ -18,7 +18,7 @@ A full end-point API for the webiste
 | /api/orders/      | GET/POST |
 
 # Data Models
-^ For the product data model I have extracted the Product type and the product Brand from the product and created a new collection for them. The reason it's done like this is because, our website fetches the product type and the product brand every time it is run. Therefore, I didn't want to go through each product every time to return the product type and brand, rather I created a collection which contains the product type an product brand with their own unique ID, and return them when it was requested
+* For the product data model I have extracted the Product type and the product Brand from the product and created a new collection for them. The reason it's done like this is because, our website fetches the product type and the product brand every time it is run. Therefore, I didn't want to go through each product every time to return the product type and brand, rather I created a collection which contains the product type an product brand with their own unique ID, and return them when it was requested
 # Setup
 
 ## Development server
