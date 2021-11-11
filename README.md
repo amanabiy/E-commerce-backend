@@ -1,7 +1,7 @@
 # Shopper E-commerce
-A full end-point API for our webiste
 
-# Introduction
+
+## Introduction
 shopper is an e-commerce website where users will be able to filter, search and find the product they want and buy online. we have tried to make the searching easier for our users and allow them to buy products from the comfort of their home. 
 - [Link to the deployed API / back-nd](https://ethio-shop.herokuapp.com/)
 - [Link to the deployed Front-end](https://kalkidan999.github.io/Emarket/shop)
@@ -29,9 +29,9 @@ our website can be used by anyone who is interested in. The shop managers will b
 ## API ROUTES
 | Routes            | Methods  |
 | ----------------- | -------- |
-| /api/users/       | GET/POST |
+| /api/users/       | GET/POST/PUT/DELET |
 | /api/products/    | GET/POST |
-| /api/carts/       | GET/POST |
+| /api/carts/       | GET/POST/DELETE |
 | /api/orders/      | GET/POST |
 
 ## Data Models
