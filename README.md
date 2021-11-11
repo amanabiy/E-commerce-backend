@@ -10,12 +10,12 @@ A full end-point API for the webiste
 * __database:__ mongodb , mongoose V6.0.11
 
 ## API ROUTES
------------------------------------------------------------------------
-| Routes            | Methods 
-| /api/users/       | GET/POST
-| /api/products/    | GET/POST
-| /api/carts/       | GET/POST
-| /api/orders/      | GET/POST
+| Routes            | Methods  |
+| ----------------- | -------- |
+| /api/users/       | GET/POST |
+| /api/products/    | GET/POST |
+| /api/carts/       | GET/POST |
+| /api/orders/      | GET/POST |
 # Setup
 
 ## Development server
