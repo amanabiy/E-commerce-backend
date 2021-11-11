@@ -36,3 +36,8 @@ Run `npm run start` to build the project. The build artifacts will be stored in 
 ##
 
 [Link to the deployed](https://ethio-shop.herokuapp.com/)
+
+## Contributers
+- Amanuel Sisay 
+- Kalkidan Demese
+- Yosef Kefale
